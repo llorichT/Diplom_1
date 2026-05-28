@@ -4,7 +4,13 @@ from unittest.mock import Mock
 from burger import Burger
 from bun import Bun
 from ingredient import Ingredient
-
+from data import (
+    BUN_NAME,
+    BUN_PRICE,
+    SAUCE_TYPE,
+    SAUCE_NAME,
+    SAUCE_PRICE,
+)
 
 @pytest.fixture
 def burger():
@@ -13,26 +19,26 @@ def burger():
 
 @pytest.fixture
 def bun():
-    return Bun("black bun", 100)
+    return Bun(BUN_NAME, BUN_PRICE)
 
 
 @pytest.fixture
 def ingredient():
-    return Ingredient("SAUCE", "hot sauce", 100)
+    return Ingredient(SAUCE_TYPE, SAUCE_NAME, SAUCE_PRICE)
 
 
 @pytest.fixture
 def mock_bun():
     bun = Mock()
-    bun.get_name.return_value = "black bun"
-    bun.get_price.return_value = 100
+    bun.get_name.return_value = BUN_NAME
+    bun.get_price.return_value = BUN_PRICE
     return bun
 
 
 @pytest.fixture
 def mock_ingredient():
     ingredient = Mock()
-    ingredient.get_type.return_value = "SAUCE"
-    ingredient.get_name.return_value = "hot sauce"
-    ingredient.get_price.return_value = 100
+    ingredient.get_type.return_value = SAUCE_TYPE
+    ingredient.get_name.return_value = SAUCE_NAME
+    ingredient.get_price.return_value = SAUCE_PRICE
     return ingredient
